@@ -18,8 +18,10 @@
   "type": "module",
   "homepage": "https://github.com/Pyplee/frontend-project-44#readme",
   "bin": {
-    "brain-games": "bin/brain-games.js",
-    "brain-even": "bin/brain-even.js"
+    "brain-games": "games/brain-games.js",
+    "brain-even": "games/brain-even.js",
+    "brain-calc": "games/brain-calc.js",
+    "brain-gcd": "games/brain-gcd.js"
   },
   "dependencies": {
     "readline-sync": "^1.4.10"
