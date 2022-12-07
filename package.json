@@ -21,7 +21,8 @@
     "brain-games": "games/brain-games.js",
     "brain-even": "games/brain-even.js",
     "brain-calc": "games/brain-calc.js",
-    "brain-gcd": "games/brain-gcd.js"
+    "brain-gcd": "games/brain-gcd.js",
+    "brain-progression": "games/brain-progression.js"
   },
   "dependencies": {
     "readline-sync": "^1.4.10"
