@@ -1,31 +1,36 @@
+#!/usr/bin/env node
 import readlineSync from 'readline-sync';
 import helloUser from '../src/cli.js';
 import generateNumber from '../bin/generate-numbers.js';
 import checkAnswer from '../bin/check-answer.js';
-import sayCorrectOrUncorrect from '../bin/say-correct.js'; // boolean, answerUser, result, userName
+import sayCorrectOrUncorrect from '../bin/say-correct.js'; // boolean, userAnswerToQuestion, correctAnswerToQuestion, userName
 
 const userName = helloUser();
 console.log("Answer 'yes' if number even otherwise answer 'no'.");
 
-const even = () => {
+const playEven = () => {
+  let resultGamesBoolean = true;
   for (let i = 0; i < 3; i += 1) {
-    const randomNumber = generateNumber(0);
-    console.log(`Question: ${randomNumber}`);
-    const answerUser = readlineSync.question('Your answer: ');
-    let result = 0;
-    if (randomNumber % 2 === 0) {
-      result = 'yes';
-    } else if (!(randomNumber % 2 === 0)) {
-      result = 'no';
+    const randomNumberForGame = generateNumber(0);
+    console.log(`Question: ${randomNumberForGame}`);
+    const userAnswerToQuestion = readlineSync.question('Your answer: ');
+    let correctAnswerToQuestion = '';
+    if (randomNumberForGame % 2 === 0) {
+      correctAnswerToQuestion = 'yes';
+    } else if (!(randomNumberForGame % 2 === 0)) {
+      correctAnswerToQuestion = 'no';
     }
-    if (checkAnswer(result, answerUser)) {
-      sayCorrectOrUncorrect(true);
+    if (checkAnswer(userAnswerToQuestion, correctAnswerToQuestion)) {
+      sayCorrectOrUncorrect(true, userAnswerToQuestion, correctAnswerToQuestion);
     } else {
-      sayCorrectOrUncorrect(false, answerUser, result, userName);
+      sayCorrectOrUncorrect(false, userAnswerToQuestion, correctAnswerToQuestion, userName);
+      resultGamesBoolean = false;
       break;
     }
+  }
+  if (resultGamesBoolean === true) {
     console.log(`Congratulations, ${userName}!`);
   }
 };
 
-even();
+playEven();
