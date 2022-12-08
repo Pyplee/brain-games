@@ -11,12 +11,12 @@ console.log('What is the result of the expression?');
 
 const playCalculate = () => {
   let resultGamesBoolean = true;
-  const singleDigitNumbers = 0;
+  const singDigitNumbers = 0;
   const twoDigitNumbers = 1;
   for (let i = 0; i < 3; i += 1) {
     let resultOpearation = true;
-    const resultFuncRandomOperator = randomOperator();
-    if (resultFuncRandomOperator === '+') {
+    const resultRandomOperator = randomOperator();
+    if (resultRandomOperator === '+') {
       const randomNumbFirst = generateNumber(twoDigitNumbers);
       const randomNumbSecond = generateNumber(twoDigitNumbers);
       resultOpearation = randomNumbFirst - (-randomNumbSecond);
@@ -30,7 +30,7 @@ const playCalculate = () => {
         break;
       }
     }
-    if (resultFuncRandomOperator === '-') {
+    if (resultRandomOperator === '-') {
       const randomNumbFirst = generateNumber(twoDigitNumbers);
       const randomNumbSecond = generateNumber(twoDigitNumbers);
       resultOpearation = randomNumbFirst - randomNumbSecond;
@@ -44,9 +44,9 @@ const playCalculate = () => {
         break;
       }
     }
-    if (resultFuncRandomOperator === '*') {
-      const randomNumbFirst = generateNumber(singleDigitNumbers);
-      const randomNumbSecond = generateNumber(singleDigitNumbers);
+    if (resultRandomOperator === '*') {
+      const randomNumbFirst = generateNumber(singDigitNumbers);
+      const randomNumbSecond = generateNumber(singDigitNumbers);
       resultOpearation = randomNumbFirst * randomNumbSecond;
       console.log(`Question: ${randomNumbFirst} * ${randomNumbSecond}`);
       const userAnswerToQuestion = readlineSync.question('Your answer: ');
