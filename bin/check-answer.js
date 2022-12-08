@@ -1,10 +1,9 @@
-const checkAnswer = (answerIn, correctAnswer, errorType = 0) => {
-  if (errorType === 1) {
-    if (-(-answerIn) === correctAnswer) {
+const checkAnswer = (answerVerifiable, answerCorrect, errorType = 'no') => {
+  if (errorType === 'yes') {
+    if (-(-answerVerifiable) === answerCorrect) {
       return true;
     }
-  }
-  if (answerIn === correctAnswer) {
+  } else if (answerVerifiable === answerCorrect) {
     return true;
   }
   return false;
