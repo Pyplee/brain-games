@@ -6,7 +6,7 @@ import checkAnswer from '../bin/check-answer.js';
 import sayCorrectOrUncorrect from '../bin/say-correct.js'; // boolean, userAnswerToQuestion, correctAnswerToQuestion, userName
 
 const userName = helloUser();
-console.log("Answer 'yes' if number even otherwise answer 'no'.");
+console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
 const playEven = () => {
   let resultGamesBoolean = true;
