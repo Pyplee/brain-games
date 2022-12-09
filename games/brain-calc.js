@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import randomOperator from '../bin/random-operator.js';
 import helloUser from '../src/cli.js';
 import generateNumber from '../bin/generate-numbers.js';
 import checkAnswer from '../bin/check-answer.js';
@@ -9,54 +8,53 @@ import sayCorrectOrUncorrect from '../bin/say-correct.js'; // boolean, userAnswe
 const userName = helloUser();
 console.log('What is the result of the expression?');
 
+const randomOperator = () => {
+  let result = '';
+  const randomNumber = Math.random(0);
+  if (randomNumber > 0 && randomNumber <= 0.33) {
+    result = '+';
+  } if (randomNumber > 0.33 && randomNumber <= 0.66) {
+    result = '-';
+  } if (randomNumber > 0.66 && randomNumber <= 0.99) {
+    result = '*';
+  }
+  return result;
+};
+
+const calcResult = (resultRandomOperator) => {
+  const result = [];
+  const firstNumb = generateNumber(1);
+  const secondNumb = generateNumber(1);
+  let resultCalculate = 0;
+  if (resultRandomOperator === '+') {
+    resultCalculate = firstNumb + secondNumb;
+    result.push(resultCalculate, firstNumb, secondNumb, resultRandomOperator);
+  } if (resultRandomOperator === '-') {
+    resultCalculate = firstNumb - secondNumb;
+    result.push(resultCalculate, firstNumb, secondNumb, resultRandomOperator);
+  } else if (resultRandomOperator === '*') {
+    const firstNumbForStar = generateNumber(0); // "0" single numb
+    const secondNumbForStar = generateNumber(0); // "0" single numb
+    resultCalculate = firstNumbForStar * secondNumbForStar;
+    result.push(resultCalculate, firstNumbForStar, secondNumbForStar, resultRandomOperator);
+  }
+  return result;
+};
+
 const playCalculate = () => {
   let resultGamesBoolean = true;
-  const singDigitNumbers = 0;
-  const twoDigitNumbers = 1;
   for (let i = 0; i < 3; i += 1) {
-    let resultOpearation = true;
     const resultRandomOperator = randomOperator();
-    if (resultRandomOperator === '+') {
-      const randomNumbFirst = generateNumber(twoDigitNumbers);
-      const randomNumbSecond = generateNumber(twoDigitNumbers);
-      resultOpearation = randomNumbFirst - (-randomNumbSecond);
-      console.log(`Question: ${randomNumbFirst} + ${randomNumbSecond}`);
-      const userAnswerToQuestion = readlineSync.question('Your answer: ');
-      if (checkAnswer(userAnswerToQuestion, resultOpearation, 'yes')) {
-        sayCorrectOrUncorrect(true);
-      } else {
-        sayCorrectOrUncorrect(false, userAnswerToQuestion, resultOpearation, userName);
-        resultGamesBoolean = false;
-        break;
-      }
-    }
-    if (resultRandomOperator === '-') {
-      const randomNumbFirst = generateNumber(twoDigitNumbers);
-      const randomNumbSecond = generateNumber(twoDigitNumbers);
-      resultOpearation = randomNumbFirst - randomNumbSecond;
-      console.log(`Question: ${randomNumbFirst} - ${randomNumbSecond}`);
-      const userAnswerToQuestion = readlineSync.question('Your answer: ');
-      if (checkAnswer(userAnswerToQuestion, resultOpearation, 'yes')) {
-        sayCorrectOrUncorrect(true);
-      } else {
-        sayCorrectOrUncorrect(false, userAnswerToQuestion, resultOpearation, userName);
-        resultGamesBoolean = false;
-        break;
-      }
-    }
-    if (resultRandomOperator === '*') {
-      const randomNumbFirst = generateNumber(singDigitNumbers);
-      const randomNumbSecond = generateNumber(singDigitNumbers);
-      resultOpearation = randomNumbFirst * randomNumbSecond;
-      console.log(`Question: ${randomNumbFirst} * ${randomNumbSecond}`);
-      const userAnswerToQuestion = readlineSync.question('Your answer: ');
-      if (checkAnswer(userAnswerToQuestion, resultOpearation, 'yes')) {
-        sayCorrectOrUncorrect(true);
-      } else {
-        sayCorrectOrUncorrect(false, userAnswerToQuestion, resultOpearation, userName);
-        resultGamesBoolean = false;
-        break;
-      }
+    const arrayResult = calcResult(resultRandomOperator); // [resultCalc, first, second, operator]
+    console.log(`Question: ${arrayResult[1]} ${arrayResult[3]} ${arrayResult[2]}`);
+    const userAnswerToQuestion = readlineSync.question('Your answer: ');
+    const correctAnswerToQuestion = arrayResult[0];
+    if (checkAnswer(userAnswerToQuestion, correctAnswerToQuestion, 'yes')) {
+      sayCorrectOrUncorrect(true);
+    } else {
+      sayCorrectOrUncorrect(false, userAnswerToQuestion, correctAnswerToQuestion, userName);
+      resultGamesBoolean = false;
+      break;
     }
   }
   if (resultGamesBoolean === true) {
