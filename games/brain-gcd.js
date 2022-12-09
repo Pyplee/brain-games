@@ -26,7 +26,7 @@ const gcd = () => {
     const firstNumbInTheQuestion = arrayWithInitialNumbAndKey[0];
     const secondNumbInTheQuestion = arrayWithInitialNumbAndKey[0] * arrayWithInitialNumbAndKey[1];
     const correctAnswerToQuestion = arrayWithInitialNumbAndKey[1];
-    console.log(`Question: ${firstNumbInTheQuestion} ${secondNumbInTheQuestion}`);
+    console.log(`Question: ${secondNumbInTheQuestion} ${firstNumbInTheQuestion}`);
     const userAnswerToQuestion = readlineSync.question('Your answer: ');
     if (checkAnswer(userAnswerToQuestion, correctAnswerToQuestion, 'yes')) {
       sayCorrectOrUncorrect(true);
