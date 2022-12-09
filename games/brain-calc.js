@@ -46,9 +46,12 @@ const playCalculate = () => {
   for (let i = 0; i < 3; i += 1) {
     const resultRandomOperator = randomOperator();
     const arrayResult = calcResult(resultRandomOperator); // [resultCalc, first, second, operator]
-    console.log(`Question: ${arrayResult[1]} ${arrayResult[3]} ${arrayResult[2]}`);
-    const userAnswerToQuestion = readlineSync.question('Your answer: ');
     const correctAnswerToQuestion = arrayResult[0];
+    const firstNumb = arrayResult[1];
+    const secondNumb = arrayResult[2];
+    const operator = arrayResult[3];
+    console.log(`Question: ${firstNumb} ${operator} ${secondNumb}`);
+    const userAnswerToQuestion = readlineSync.question('Your answer: ');
     if (checkAnswer(userAnswerToQuestion, correctAnswerToQuestion, 'yes')) {
       sayCorrectOrUncorrect(true);
     } else {
