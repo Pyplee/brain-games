@@ -17,9 +17,9 @@ const playPrime = () => {
     console.log(`Question: ${randomNumberForGame}`);
     const userAnswerToQuestion = readlineSync.question('Your answer: ');
     let correctAnswerToQuestion = '';
-    if ((arrayWithPrimeNumb.indexOf(randomNumberForGame)) === -1) { // NO
+    if ((arrayWithPrimeNumb.indexOf(randomNumberForGame)) === -1) { // IF NO
       correctAnswerToQuestion = 'no';
-    } else if ((arrayWithPrimeNumb.indexOf(randomNumberForGame)) !== -1) { // YES
+    } else if ((arrayWithPrimeNumb.indexOf(randomNumberForGame)) !== -1) { // IF YES
       correctAnswerToQuestion = 'yes';
     }
     if (checkAnswer(userAnswerToQuestion, correctAnswerToQuestion)) {
