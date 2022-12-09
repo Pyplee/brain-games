@@ -9,23 +9,29 @@ const userName = helloUser();
 console.log('Find the greatest common divisor of given numbers.');
 
 const generateNumbAndKey = () => {
-  const singleDigitNumbers = 0;
   const twoDigitNumbers = 1;
   const startArray = [];
-  const startNumb = generateNumber(twoDigitNumbers);
-  startArray.push(startNumb);
-  const keyNumb = generateNumber(singleDigitNumbers);
-  startArray.push(keyNumb);
+  const firstNumb = generateNumber(twoDigitNumbers);
+  startArray.push(firstNumb);
+  const secondNumb = generateNumber(twoDigitNumbers);
+  startArray.push(secondNumb);
   return startArray;
 };
 
-const gcd = () => {
+const gcd = (a, b) => {
+  if (!b) {
+    return a;
+  }
+  return gcd(b, a % b);
+};
+
+const playGCD = () => {
   let resultGamesBoolean = true;
   for (let i = 0; i < 3; i += 1) {
     const arrayWithInitialNumbAndKey = generateNumbAndKey();
     const firstNumbInTheQuestion = arrayWithInitialNumbAndKey[0];
-    const secondNumbInTheQuestion = arrayWithInitialNumbAndKey[0] * arrayWithInitialNumbAndKey[1];
-    const correctAnswerToQuestion = arrayWithInitialNumbAndKey[1];
+    const secondNumbInTheQuestion = arrayWithInitialNumbAndKey[1];
+    const correctAnswerToQuestion = gcd(firstNumbInTheQuestion, secondNumbInTheQuestion);
     console.log(`Question: ${secondNumbInTheQuestion} ${firstNumbInTheQuestion}`);
     const userAnswerToQuestion = readlineSync.question('Your answer: ');
     if (checkAnswer(userAnswerToQuestion, correctAnswerToQuestion, 'yes')) {
@@ -41,4 +47,4 @@ const gcd = () => {
   }
 };
 
-gcd();
+playGCD();
