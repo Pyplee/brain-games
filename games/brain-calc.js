@@ -21,36 +21,31 @@ const randomOperator = () => {
   return result;
 };
 
-const calcResult = (resultRandomOperator) => {
-  const result = [];
-  const firstNumb = generateNumber(1);
-  const secondNumb = generateNumber(1);
+const calcResult = (resultRandomOperator, firstNumb, secondNumb) => {
   let resultCalculate = 0;
   if (resultRandomOperator === '+') {
     resultCalculate = firstNumb + secondNumb;
-    result.push(resultCalculate, firstNumb, secondNumb, resultRandomOperator);
   } if (resultRandomOperator === '-') {
     resultCalculate = firstNumb - secondNumb;
-    result.push(resultCalculate, firstNumb, secondNumb, resultRandomOperator);
   } else if (resultRandomOperator === '*') {
-    const firstNumbForStar = generateNumber(0); // "0" single numb
-    const secondNumbForStar = generateNumber(0); // "0" single numb
-    resultCalculate = firstNumbForStar * secondNumbForStar;
-    result.push(resultCalculate, firstNumbForStar, secondNumbForStar, resultRandomOperator);
+    resultCalculate = firstNumb * secondNumb;
   }
-  return result;
+  return resultCalculate;
 };
 
 const playCalculate = () => {
   let resultGamesBoolean = true;
   for (let i = 0; i < 3; i += 1) {
     const resultRandomOperator = randomOperator();
-    const arrayResult = calcResult(resultRandomOperator); // [resultCalc, first, second, operator]
-    const correctAnswerToQuestion = arrayResult[0];
-    const firstNumb = arrayResult[1];
-    const secondNumb = arrayResult[2];
-    const operator = arrayResult[3];
-    console.log(`Question: ${firstNumb} ${operator} ${secondNumb}`);
+    let firstNumb = generateNumber(1);
+    let secondNumb = generateNumber(1);
+    if (resultRandomOperator === '*') {
+      firstNumb = Math.round(firstNumb / 10);
+      secondNumb = Math.round(secondNumb / 10);
+    }
+    const arrayResult = calcResult(resultRandomOperator, firstNumb, secondNumb);
+    const correctAnswerToQuestion = arrayResult;
+    console.log(`Question: ${firstNumb} ${resultRandomOperator} ${secondNumb}`);
     const userAnswerToQuestion = readlineSync.question('Your answer: ');
     if (checkAnswer(userAnswerToQuestion, correctAnswerToQuestion, 'yes')) {
       sayCorrectOrUncorrect(true);
