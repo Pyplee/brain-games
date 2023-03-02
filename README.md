@@ -7,8 +7,8 @@
 ```bash
 Clone the repository
 Enter the command: make install
-Enter the name of the game in console
-Example: name@name:~$ brain-games
+Enter the name of the game in console with make
+Example: name@name:~$ make brain-name
 Play
 ```
 ## Games
@@ -24,9 +24,13 @@ brain-progression: Find the missing number in the progression
 
 ## Asciinema
 
-[![asciicast](https://asciinema.org/a/bayhmXfDvJdzr5hfvp2i99crr.svg)](https://asciinema.org/a/bayhmXfDvJdzr5hfvp2i99crr)
-[![asciicast](https://asciinema.org/a/NR4eqyGmuq7gpO3Max5a3wNtf.svg)](https://asciinema.org/a/NR4eqyGmuq7gpO3Max5a3wNtf)
-[![asciicast](https://asciinema.org/a/VYZPeprh2S5wQj7F9LoKbPYfU.svg)](https://asciinema.org/a/VYZPeprh2S5wQj7F9LoKbPYfU)
-[![asciicast](https://asciinema.org/a/Ub60lakxXBqkGlMIDOuoZewK9.svg)](https://asciinema.org/a/Ub60lakxXBqkGlMIDOuoZewK9)
-[![asciicast](https://asciinema.org/a/Lm8YjhTrZqRNSwj6XaeBsQdhY.svg)](https://asciinema.org/a/Lm8YjhTrZqRNSwj6XaeBsQdhY)
-[![asciicast](https://asciinema.org/a/3xfRsOlnxuv3ZEY0oNl1hdo8X.svg)](https://asciinema.org/a/3xfRsOlnxuv3ZEY0oNl1hdo8X)
+# brain-even:
+[![asciicast](https://asciinema.org/a/AeIgtIu2L7bGDxrMWWW8I4nHX.svg)](https://asciinema.org/a/AeIgtIu2L7bGDxrMWWW8I4nHX)
+# brain-calc
+[![asciicast](https://asciinema.org/a/xrnAhPYBClKlhgYNSsLU2Xhq3.svg)](https://asciinema.org/a/xrnAhPYBClKlhgYNSsLU2Xhq3)
+# brain-gcd
+[![asciicast](https://asciinema.org/a/AuQd0xgi5BZeWhTsBjDKbvQTL.svg)](https://asciinema.org/a/AuQd0xgi5BZeWhTsBjDKbvQTL)
+# brain-progression
+[![asciicast](https://asciinema.org/a/Ndu8Ur7r9Kj58qAJXAtgxnHmH.svg)](https://asciinema.org/a/Ndu8Ur7r9Kj58qAJXAtgxnHmH)
+# brain-prime
+[![asciicast](https://asciinema.org/a/CJEaGaB3oLMYeMy4b5dv295Jq.svg)](https://asciinema.org/a/CJEaGaB3oLMYeMy4b5dv295Jq)
