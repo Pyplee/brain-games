@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import helloUser from '../src/cli.js';
-import generateNumber from '../bin/generate-numbers.js';
-import checkAnswer from '../bin/check-answer.js';
-import sayCorrectOrUncorrect from '../bin/say-correct.js'; // boolean, userAnswerToQuestion, correctAnswerToQuestion, userName
+import helloUser from '../cli.js';
+import generateNumber from '../generate-numbers.js';
+import checkAnswer from '../check-answer.js';
+import sayCorrectOrUncorrect from '../say-correct.js'; // boolean, userAnswerToQuestion, correctAnswerToQuestion, userName
 
 const userName = helloUser();
 console.log('What number is missing in the progression?');
@@ -81,4 +81,4 @@ const playProgression = () => {
   }
 };
 
-playProgression();
+export default playProgression;
