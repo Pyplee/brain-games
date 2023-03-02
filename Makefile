@@ -1,3 +1,5 @@
+//To install the project, clone rep and enter in console "make install". To start playing enter in console "make brain-name" game.
+
 install:
 	npm ci
 
