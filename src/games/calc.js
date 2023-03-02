@@ -2,7 +2,7 @@
 import getRandomInRange from '../utils.js';
 import runEngine from '../index.js';
 
-const playCalculate = () => {
+const getPlayCalculate = () => {
   const rules = 'What is the result of the expression?';
   const questions = [];
   const correctAnswer = [];
@@ -30,4 +30,4 @@ const playCalculate = () => {
   runEngine(rules, [questions, correctAnswer]);
 };
 
-export default playCalculate;
+export default getPlayCalculate;
