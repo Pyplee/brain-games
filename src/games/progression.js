@@ -17,9 +17,13 @@ const getPlayProgression = () => {
   const rules = 'What number is missing in the progression?';
   const questions = [];
   const correctAnswer = [];
+  const rateGenNumMin = 0;
+  const rateGenNumMax = 20;
+  const rateGenNumForPlusMin = 1;
+  const rateGenNumForPlusMax = 10;
   for (let i = 0; i < 3; i += 1) {
-    const numbForProgress = getRandomInRange(0, 20);
-    const numbPlus = getRandomInRange(1, 10);
+    const numbForProgress = getRandomInRange(rateGenNumMin, rateGenNumMax);
+    const numbPlus = getRandomInRange(rateGenNumForPlusMin, rateGenNumForPlusMax);
     const [progression, answer] = getProgression(numbForProgress, numbPlus);
     questions.push(progression);
     correctAnswer.push(answer);

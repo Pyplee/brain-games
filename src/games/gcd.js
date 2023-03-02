@@ -13,9 +13,11 @@ const getPlayGcd = () => {
   const rules = 'Find the greatest common divisor of given numbers.';
   const questions = [];
   const correctAnswer = [];
+  const rateGenNumMin = 1;
+  const rateGenNumMax = 50;
   for (let i = 0; i < 3; i += 1) {
-    const x = getRandomInRange(1, 50);
-    const y = getRandomInRange(1, 50);
+    const x = getRandomInRange(rateGenNumMin, rateGenNumMax);
+    const y = getRandomInRange(rateGenNumMin, rateGenNumMax);
     questions.push(`${x} ${y}`);
     correctAnswer.push(gcd(x, y));
   }
