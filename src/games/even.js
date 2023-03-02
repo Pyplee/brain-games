@@ -1,36 +1,17 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
-import helloUser from '../cli.js';
-import generateNumber from '../generate-numbers.js';
-import checkAnswer from '../check-answer.js';
-import sayCorrectOrUncorrect from '../say-correct.js'; // boolean, userAnswerToQuestion, correctAnswerToQuestion, userName
+import runEngine from '../index.js';
+import getRandomInRange from '../utils.js';
 
-const userName = helloUser();
-console.log('Answer "yes" if the number is even, otherwise answer "no".');
-
-const playEven = () => {
-  let resultGamesBoolean = true;
+const getPlayEven = () => {
+  const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
+  const questions = [];
+  const correctAnswer = [];
   for (let i = 0; i < 3; i += 1) {
-    const randomNumberForGame = generateNumber(0);
-    console.log(`Question: ${randomNumberForGame}`);
-    const userAnswerToQuestion = readlineSync.question('Your answer: ');
-    let correctAnswerToQuestion = '';
-    if (randomNumberForGame % 2 === 0) {
-      correctAnswerToQuestion = 'yes';
-    } else if (!(randomNumberForGame % 2 === 0)) {
-      correctAnswerToQuestion = 'no';
-    }
-    if (checkAnswer(userAnswerToQuestion, correctAnswerToQuestion)) {
-      sayCorrectOrUncorrect(true, userAnswerToQuestion, correctAnswerToQuestion);
-    } else {
-      sayCorrectOrUncorrect(false, userAnswerToQuestion, correctAnswerToQuestion, userName);
-      resultGamesBoolean = false;
-      break;
-    }
+    const numbers = getRandomInRange(0, 100);
+    questions.push(numbers);
+    correctAnswer.push(numbers % 2 === 0 ? 'yes' : 'no');
   }
-  if (resultGamesBoolean === true) {
-    console.log(`Congratulations, ${userName}!`);
-  }
+  runEngine(rules, [questions, correctAnswer]);
 };
 
-export default playEven;
+export default getPlayEven;
