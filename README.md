@@ -24,13 +24,13 @@ brain-progression: Find the missing number in the progression
 
 ## Asciinema
 
-# brain-even:
+### brain-even:
 [![asciicast](https://asciinema.org/a/AeIgtIu2L7bGDxrMWWW8I4nHX.svg)](https://asciinema.org/a/AeIgtIu2L7bGDxrMWWW8I4nHX)
-# brain-calc
+### brain-calc
 [![asciicast](https://asciinema.org/a/xrnAhPYBClKlhgYNSsLU2Xhq3.svg)](https://asciinema.org/a/xrnAhPYBClKlhgYNSsLU2Xhq3)
-# brain-gcd
+### brain-gcd
 [![asciicast](https://asciinema.org/a/AuQd0xgi5BZeWhTsBjDKbvQTL.svg)](https://asciinema.org/a/AuQd0xgi5BZeWhTsBjDKbvQTL)
-# brain-progression
+### brain-progression
 [![asciicast](https://asciinema.org/a/Ndu8Ur7r9Kj58qAJXAtgxnHmH.svg)](https://asciinema.org/a/Ndu8Ur7r9Kj58qAJXAtgxnHmH)
-# brain-prime
+### brain-prime
 [![asciicast](https://asciinema.org/a/CJEaGaB3oLMYeMy4b5dv295Jq.svg)](https://asciinema.org/a/CJEaGaB3oLMYeMy4b5dv295Jq)
