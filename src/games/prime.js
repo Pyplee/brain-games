@@ -1,38 +1,18 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
-import helloUser from '../cli.js';
-import generateNumber from '../generate-numbers.js';
-import checkAnswer from '../check-answer.js';
-import sayCorrectOrUncorrect from '../say-correct.js'; // boolean, userAnswerToQuestion, correctAnswerToQuestion, userName
+import getRandomInRange from '../utils.js';
+import runEngine from '../index.js';
 
-const userName = helloUser();
-console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-
-const playPrime = () => {
-  const singleDigitNumbers = 0;
-  let resultGamesBoolean = true;
+const getPlayPrime = () => {
+  const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  const questions = [];
+  const correctAnswer = [];
+  const primeNumb = [2, 3, 5, 7];
   for (let i = 0; i < 3; i += 1) {
-    const arrayWithPrimeNumb = [2, 3, 5, 7];
-    const randomNumberForGame = generateNumber(singleDigitNumbers);
-    console.log(`Question: ${randomNumberForGame}`);
-    const userAnswerToQuestion = readlineSync.question('Your answer: ');
-    let correctAnswerToQuestion = '';
-    if ((arrayWithPrimeNumb.indexOf(randomNumberForGame)) === -1) { // IF NO
-      correctAnswerToQuestion = 'no';
-    } else if ((arrayWithPrimeNumb.indexOf(randomNumberForGame)) !== -1) { // IF YES
-      correctAnswerToQuestion = 'yes';
-    }
-    if (checkAnswer(userAnswerToQuestion, correctAnswerToQuestion)) {
-      sayCorrectOrUncorrect(true);
-    } else if (checkAnswer(userAnswerToQuestion, correctAnswerToQuestion) === false) {
-      sayCorrectOrUncorrect(false, userAnswerToQuestion, correctAnswerToQuestion, userName);
-      resultGamesBoolean = false;
-      break;
-    }
+    const number = getRandomInRange(0, 10);
+    questions.push(number);
+    correctAnswer.push(primeNumb.indexOf(number) !== -1 ? 'yes' : 'no');
   }
-  if (resultGamesBoolean === true) {
-    console.log(`Congratulations, ${userName}!`);
-  }
+  runEngine(rules, [questions, correctAnswer]);
 };
 
-export default playPrime;
+export default getPlayPrime;
