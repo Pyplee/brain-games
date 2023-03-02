@@ -1,63 +1,33 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
-import helloUser from '../cli.js';
-import generateNumber from '../generate-numbers.js';
-import checkAnswer from '../check-answer.js';
-import sayCorrectOrUncorrect from '../say-correct.js'; // boolean, userAnswerToQuestion, correctAnswerToQuestion, userName
-
-const userName = helloUser();
-console.log('What is the result of the expression?');
-
-const randomOperator = () => {
-  let result = '';
-  const randomNumber = Math.random(0);
-  if (randomNumber > 0 && randomNumber <= 0.33) {
-    result = '+';
-  } if (randomNumber > 0.33 && randomNumber <= 0.66) {
-    result = '-';
-  } if (randomNumber > 0.66 && randomNumber <= 0.99) {
-    result = '*';
-  }
-  return result;
-};
-
-const calcResult = (resultRandomOperator, firstNumb, secondNumb) => {
-  let resultCalculate = 0;
-  if (resultRandomOperator === '+') {
-    resultCalculate = firstNumb + secondNumb;
-  } if (resultRandomOperator === '-') {
-    resultCalculate = firstNumb - secondNumb;
-  } else if (resultRandomOperator === '*') {
-    resultCalculate = firstNumb * secondNumb;
-  }
-  return resultCalculate;
-};
+import getRandomInRange from '../utils.js';
+import runEngine from '../index.js';
 
 const playCalculate = () => {
-  let resultGamesBoolean = true;
+  const rules = 'What is the result of the expression?';
+  const questions = [];
+  const correctAnswer = [];
   for (let i = 0; i < 3; i += 1) {
-    const resultRandomOperator = randomOperator();
-    let firstNumb = generateNumber(1);
-    let secondNumb = generateNumber(1);
-    if (resultRandomOperator === '*') {
-      firstNumb = Math.round(firstNumb / 10);
-      secondNumb = Math.round(secondNumb / 10);
+    const randomOperator = getRandomInRange(1, 3);
+    if (randomOperator === 1) { // -
+      const x = getRandomInRange(0, 50);
+      const y = getRandomInRange(0, 50);
+      questions.push(`${x} - ${y}`);
+      correctAnswer.push((x - y));
     }
-    const arrayResult = calcResult(resultRandomOperator, firstNumb, secondNumb);
-    const correctAnswerToQuestion = arrayResult;
-    console.log(`Question: ${firstNumb} ${resultRandomOperator} ${secondNumb}`);
-    const userAnswerToQuestion = readlineSync.question('Your answer: ');
-    if (checkAnswer(userAnswerToQuestion, correctAnswerToQuestion, 'yes')) {
-      sayCorrectOrUncorrect(true);
-    } else {
-      sayCorrectOrUncorrect(false, userAnswerToQuestion, correctAnswerToQuestion, userName);
-      resultGamesBoolean = false;
-      break;
+    if (randomOperator === 2) { // +
+      const x = getRandomInRange(0, 50);
+      const y = getRandomInRange(0, 50);
+      questions.push(`${x} + ${y}`);
+      correctAnswer.push((x + y));
+    }
+    if (randomOperator === 3) { // *
+      const x = getRandomInRange(0, 20);
+      const y = getRandomInRange(0, 10);
+      questions.push(`${x} * ${y}`);
+      correctAnswer.push((x * y));
     }
   }
-  if (resultGamesBoolean === true) {
-    console.log(`Congratulations, ${userName}!`);
-  }
+  runEngine(rules, [questions, correctAnswer]);
 };
 
 export default playCalculate;
