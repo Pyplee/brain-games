@@ -3,7 +3,7 @@ import runEngine from '../index.js';
 import getRandomInRange from '../utils.js';
 
 const getPlayEven = () => {
-  const rules = 'Find the greatest common divisor of given numbers.';
+  const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
   const questions = [];
   const correctAnswer = [];
   for (let i = 0; i < 3; i += 1) {

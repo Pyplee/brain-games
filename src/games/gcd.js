@@ -10,7 +10,7 @@ const gcd = (a, b) => {
 };
 
 const getPlayGcd = () => {
-  const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
+  const rules = 'Find the greatest common divisor of given numbers.';
   const questions = [];
   const correctAnswer = [];
   for (let i = 0; i < 3; i += 1) {
